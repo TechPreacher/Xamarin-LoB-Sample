@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="Xamarin_LoB_Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xamarin_LoB_Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Back" Label="previous" Command="{Binding PreviousCommand}" />
+            <AppBarButton Icon="Forward" Label="next" Command="{Binding NextCommand}" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="XAMARIN LOB SAMPLE APP" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="customers" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel>
+                <TextBlock Text="Firstname:" />
+                <TextBox Text="{Binding CurrentCustomer.FirstName}" />
+                <TextBlock Text="Lastname:" Margin="0 30 0 0"/>
+                <TextBox Text="{Binding CurrentCustomer.LastName}" />
+                <TextBlock Text="Email:" Margin="0 30 0 0"/>
+                <TextBox Text="{Binding CurrentCustomer.Email}" />
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Page>
